@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Creando Elementos con JSX</title>
+</head>
+
+<body>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <div id="root"> </div>
+    <script type="text/babel">
+
+        const h1 = "Lista de Productos en Stock";
+        const h2 = "Productos en falta";
+        const verdurasStock = ["Manzana", "Pera", "Naranja", "Banana", "Kiwi"];
+        const verdurasEnFalta = ["Durazno", "Cereza", "Ananá"];
+
+        function MyUlStock() {
+            return(
+                <div>
+                    <h1>Lista de productos en Stock</h1>
+                    <ul>
+                    {verdurasStock.map(verdura => (
+                        <li>{verdura}</li>
+                    ))}
+                    </ul>
+                </div>
+            )           
+        };
+
+        function MyUlEnFalta() {
+            return (
+            <div>
+                <h2>Productos en Falta</h2>
+                <ul>{
+                    verdurasEnFalta.map(verdura => (
+                        <li>{verdura}</li>
+                    ))
+                }</ul>
+            </div>
+            )
+        };
+
+        function MyContainer() {
+            return (
+                <div><MyUlStock/><MyUlEnFalta/></div>
+            )
+
+        };
+        
+        ReactDOM.render(<MyContainer/>, document.getElementById("root"))
+
+    </script>
+
+</body>
+
+</html>
